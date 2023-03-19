@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fusion Login and signup</title>
+
+	<style>
+		.Incmessage{
+			color: red;
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<div class="container" id="container">
+		<div class="form-container sign-up-container">
+			<form action="/register" method="post">
+				<h1 class="create">Create your Account</h1>
+				<!-- <div class="social-container">
+					<a href="#" class="social"><i class="fab fa-facebook-f"><img src = "img/facebook.png"  class="icn"></i></a>
+					<a href="#" class="social"><img src = "img/google.png"  class="icn"><i class="fab fa-google-plus-g"></i></a>
+					<a href="#" class="social"><i class="fab fa-linkedin-in"><img src = "img/linkedin.png"  class="icn"></i></a>
+				</div> -->
+				<!-- <span>or use your email for registration</span> -->
+				<input type="text" class="input-txt" placeholder="Name" name="Name" required/>
+				<input type="email" class="input-txt" placeholder="Email" name="Email" required/>
+				<input placeholder="DoB" type="text" name="DOB" onfocus="(this.type = 'date')"  id="date" class="input-txt" required>
+				<!-- <input type="password" class="input-txt" placeholder="Password" name="password"  required/> -->
+				<div class="LoginPassword">
+					<input type="password" id="user_password" name="password" placeholder="Password" required/>
+					<!-- <i class="fa-solid fa-eye" id="eye"></i> -->
+				</div>
+				<!-- <i class="bi bi-eye-slash" id="showPassword2"></i> -->
+				<!-- <input type="password" class="input-txt" placeholder="Re-Enter Password" name="passwordc" required/> -->
+				<div class="LoginPassword">
+					<input type="password" id="user_password1" name="password" placeholder="Re-Enter Password" required/>
+				</div>
+				<!-- <i class="bi bi-eye-slash" id="showPassword1"></i> -->
+				<br>
+				<div class="IncMessage">
+					<%=invalid%>
+				</div>
+				<button class="sign">Sign Up</button>
+			</form>
+		</div>
+
+		<div class="form-container sign-in-container">
+			<form action="/login" method="post">
+				<h1>Log in</h1>
+				<br>
+				<!-- <div class="social-container">
+					<a href="#" class="social"><i class="fab fa-facebook-f"><img src = "facebook.png"  class="icn"></i></a>
+					<a href="#" class="social"><img src = "img/google.png"  class="icn"><i class="fab fa-google-plus-g"></i></a>
+					<a href="#" class="social"><i class="fab fa-linkedin-in"><img src = "img/linkedin.png"  class="icn"></i></a>
+				</div> -->
+				<!-- <span>or use your account</span> -->
+				<input type="email" id="user_email" name="email_address" placeholder="Email Address" />
+				<div class="LoginPassword">
+					<input type="password" id="user_password" name="password" placeholder="Password" />
+					<i class="fa-solid fa-eye" id="eye"></i>
+				</div>
+				<!-- <i class="bi bi-eye-slash" id="showPassword"></i> -->
+				<br>
+				<div class="Incmessage">
+					<%=invalid%>
+				</div>
+				<a href="#">Forgot your password?</a>
+				<input type="submit" name="" id="logIn" value="Log In">
+			</form>
+		</div>
+
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-left">
+					<h1>Welcome Back!</h1>
+					<p>To keep connected with us please login with your personal info</p>
+					<button class="ghost" id="signIn">Log In</button>
+				</div>
+				<div class="overlay-panel overlay-right">
+					<h1>Hello, Friend!</h1>
+					<p>Enter your personal details and start journey with us</p>
+					<button class="ghost" id="signUp">Sign Up</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+<script>
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const container = document.getElementById('container');
+
+    signUpButton.addEventListener('click', () => {
+	    container.classList.add("right-panel-active");
+    });
+
+    signInButton.addEventListener('click', () => {
+	    container.classList.remove("right-panel-active");
+    });
+</script>
+
+<script>
+	const togglePassword = document.querySelector("#eye")
+	const password = document.querySelector("#user_password")
+
+	togglePassword.addEventListener('click', function() {
+		// toggle the type attribute
+		const type = password.getAttribute("type") === "password" ? "text" : "password"
+		password.setAttribute("type",type)
+
+		// toggle the icon
+		this.classList.toggle("fa-eye-slash")
+	})
+
+</script>
+
+</html>
