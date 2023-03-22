@@ -54,9 +54,13 @@ app.get('/',(req,res) => {
 // })
 
 // Get user data to /dashboard page
-app.post("/login", (req,response) => {
+app.post("/login", async (req,response) => {
     var userEmail = req.body.email_address
     var password = req.body.password
+
+    var encryptedPassword = await bcrypt.hash(password,salRounds)
+
+    // console.log(encryptedPassword)
 
     if(userEmail && password)
     {
@@ -68,7 +72,8 @@ app.post("/login", (req,response) => {
             {
               for(var count = 0; count < data.length; count++)
               {
-                  if(data[count].password == password)
+                //   console.log(data[count].password)
+                  if(data[count].password === password || bcrypt.compare(password,encryptedPassword))
                   {
                       response.render('blah', {name: data[count].Name});
                   }
@@ -122,12 +127,12 @@ app.post('/register',async (req,response) => {
         }
         else
         {
-            response.render('signup',{signup:"PASSWORDS DON'T MATCH"})
+            response.render('signup',{signup:"PASSWORDS DON'T MATCH",invalid:""})
         }
     }
     else
     {
-        response.render('signup',{signup:"PLEASE ENTER VALID DETAILS"})
+        response.render('signup',{signup:"PLEASE ENTER VALID DETAILS",invalid:""})
         response.end()
     }
 })

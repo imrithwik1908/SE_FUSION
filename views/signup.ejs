@@ -23,12 +23,6 @@
 		<div class="form-container sign-up-container">
 			<form action="/register" method="post">
 				<h1>Create your Account</h1>
-				<!-- <div class="social-container">
-					<a href="#" class="social"><i class="fab fa-facebook-f"><img src = "img/facebook.png"  class="icn"></i></a>
-					<a href="#" class="social"><img src = "img/google.png"  class="icn"><i class="fab fa-google-plus-g"></i></a>
-					<a href="#" class="social"><i class="fab fa-linkedin-in"><img src = "img/linkedin.png"  class="icn"></i></a>
-				</div> -->
-				<!-- <span>or use your email for registration</span> -->
 				<input type="text" class="input-txt" placeholder="Name" name="Name" required/>
 				<input type="email" class="input-txt" placeholder="Email" name="Email" required/>
 				<input placeholder="DoB" type="text" name="DOB" onfocus="(this.type = 'date')"  id="date" class="input-txt" required>
@@ -54,8 +48,15 @@
 				</div> -->
 				<!-- <span>or use your account</span> -->
 				<input type="email" id="user_email" name="email_address" placeholder="Email Address" />
-				<input type="password" id="user_password" name="password" placeholder="Password" />
+				<div class="LoginPassword">
+					<input type="password" id="user_password" name="password" placeholder="Password" />
+					<i class="fa-solid fa-eye" id="eye"></i>
+				</div>
+				<!-- <i class="bi bi-eye-slash" id="showPassword"></i> -->
 				<br>
+				<div class="Incmessage">
+					<%=invalid%>
+				</div>
 				<a href="#">Forgot your password?</a>
 				<input type="submit" name="" id="logIn" value="Log In">
 			</form>
